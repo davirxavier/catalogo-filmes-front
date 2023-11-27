@@ -1,0 +1,114 @@
+<div class="nav-container"
+     [ngClass]="{'bg-black': isMinimal()}">
+  <div class="d-flex flex-row" id="navmenu-container">
+    <app-catalogo-dropdown class="mr-1"
+                           [content]="getDropdownTextArray(dropDownLinks)"
+                           [buttonIconName]="'menu'"
+                           (clickEvent)="onDropdownClicked($event, dropDownLinks)"></app-catalogo-dropdown>
+
+    <h2 id="navbar-title" class="unselectable">{{ 'navbar.title' | translate }}</h2>
+  </div>
+
+  <nav role="navigation" fxFlex fxLayout fxLayoutAlign="start" style="margin-left: 30px" id="link-container">
+    <ul fxLayout fxLayoutGap="20px" class="navbar-list">
+      <li *ngFor="let link of navbarLinks; let i = index">
+        <a mat-button
+           [ngClass]="{ 'bg-light text-black-important' : activePage === i }"
+           (click)="onNavigateClicked(i, link.link)" class="btn navbar-item">{{ link.text | translate }}</a>
+      </li>
+
+      <li *ngIf="isAdmin() && currentUser">
+        <app-catalogo-dropdown [content]="getDropdownTextArray(manageLinks)"
+                               [openInHover]="true"
+                               (clickEvent)="onDropdownClicked($event, manageLinks)"
+                               [buttonIconName]="'arrow_drop_down'"
+                               [buttonText]="'navbar.manage' | translate"></app-catalogo-dropdown>
+      </li>
+    </ul>
+  </nav>
+
+  <div fxFlex fxLayout fxLayoutAlign="end">
+    <ul fxLayout fxLayoutGap="" class="navbar-list" id="navconfig-list">
+      <div class="mr-2" [hidden]="!showSearchBar()">
+        <app-catalogo-search-bar (searchEvent)="onSearch($event)"
+                                 (clearEvent)="onClearSearchbar()"
+                                 (expandedChange)="onSearchBarExpand($event)"
+                                 [placeholderText]="'navbar.searchPlaceholder' | translate"
+                                 [expandLabel]="'navbar.expandSearch' | translate"
+                                 [closeLabel]="'navbar.closeSearch' | translate"
+                                 [searchbarSrText]="'navbar.searchbarSr' | translate"
+                                 [filtersSrText]="'navbar.searchbarFilters' | translate"
+                                 [clearFieldSr]="'navbar.clearSearch' | translate"
+                                 [filters]="filmeSearchFiltersTranslationKeys"></app-catalogo-search-bar>
+      </div>
+
+      <li id="config-dropdown-container">
+        <app-catalogo-dropdown  [content]="configDropdownText"
+                                (clickEvent)="configDropdownButtons[$event].call()"
+                                [rightAligned]="true"
+                                [buttonIconName]="'settings'"></app-catalogo-dropdown>
+      </li>
+
+      <ng-container *ngIf="shouldShowOptions && (!currentUser || (currentUser && !currentUser.idioma))">
+        <li *ngFor="let lang of languages; let i = index" class="mr-1">
+          <button
+            mat-icon-button class="btn"
+            matTooltip="{{ ('navbar.change_language' | translate) + lang.name }}"
+            [ngClass]="{ 'btn-outline-light bg-light' : selected === i }"
+            (click)="setLanguage(lang.tag, i)"
+            attr.aria-label="{{ ('navbar.change_language' | translate) + lang.name }}">
+            <span class="flag-icon" [ngClass]="lang.iconClass"></span>
+          </button>
+        </li>
+      </ng-container>
+
+      <ng-container *ngIf="shouldShowOptions">
+        <li>
+          <button mat-icon-button matTooltip="{{ 'navbar.high_contrast' | translate }}"
+                  class="mr-1" (click)="onInvertColors()" [ngClass]="{'bg-light': highContrast}"
+                  attr.aria-label="{{ 'navbar.high_contrast' | translate }}">
+            <mat-icon>invert_colors</mat-icon>
+          </button>
+        </li>
+
+        <li class="mr-1">
+          <button mat-icon-button matTooltip="{{ 'navbar.font_increase' | translate }}"
+                  (click)="onIncreaseFontSize()"
+                  attr.aria-label="{{ 'navbar.font_increase' | translate }}">A+</button>
+        </li>
+
+        <li class="mr-1">
+          <button mat-icon-button matTooltip="{{ 'navbar.font_restore' | translate }}"
+                  (click)="onRestoreFontSize()"
+                  attr.aria-label="{{ 'navbar.font_restore' | translate }}">A</button>
+        </li>
+
+        <li class="mr-1">
+          <button mat-icon-button matTooltip="{{ 'navbar.font_decrease' | translate }}"
+                  (click)="onDecreaseFontSize()"
+                  attr.aria-label="{{ 'navbar.font_decrease' | translate }}">A-</button>
+        </li>
+
+        <li class="mr-1" *ngIf="!isAdmin()">
+          <button mat-button class="btn" matTooltip="{{ 'navigation.login_long' | translate }}"
+                  attr.aria-label="{{ 'navigation.login_long' | translate }}"
+                  routerLink="/login"
+                  [ngClass]="{ 'bg-light text-black-important' : currentUrl() === '/login' }">
+            <mat-icon>login</mat-icon> {{ 'navigation.login' | translate}}
+          </button>
+        </li>
+
+        <!-- TODO Responsividade -->
+        <li class="mr-1" *ngIf="isAdmin() && currentUser"
+            matTooltip="{{ 'navbar.account' | translate }}">
+          <app-catalogo-dropdown [content]="['navigation.account_pref', 'navigation.logout']"
+                                 [buttonIconName]="'account_circle'"
+                                 [rightAligned]="true"
+                                 [header]="{ title: currentUser.nome, subtitle: currentUser.username }"
+                                 (clickEvent)="onAccountClicked($event)"></app-catalogo-dropdown>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+
+</div>

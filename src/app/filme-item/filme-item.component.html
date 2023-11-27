@@ -1,0 +1,13 @@
+<button mat-button class="app-card filme-container" matRipple tabindex="0"
+        [routerLink]="['/filmes', filme.id]" [queryParams]="getQueryParams()">
+  <figure class="h-100 w-100 d-flex flex-column justify-content-between">
+    <div class="filme-image-container ml-auto mr-auto mt-auto mb-auto">
+      <span *ngIf="filme.imagemAlt && filme.imagemAlt.length > 0"
+            class="sr-only">{{ 'info.filme_image_label' | translate }}{{ filme.imagemAlt }}</span>
+      <img draggable="false" *ngIf="filme.imagem" [src]="sanitizedImage" [alt]="filme.imagemAlt || ''">
+      <img draggable="false" *ngIf="!filme.imagem" src="assets/default_filmeimg.png">
+    </div>
+    <span class="sr-only">{{'info.filme_title' | translate}}</span>
+    <figcaption class="ml-auto mr-auto">{{filme.titulo}}</figcaption>
+  </figure>
+</button>

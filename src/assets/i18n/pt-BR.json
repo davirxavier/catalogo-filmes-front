@@ -1,0 +1,173 @@
+{
+  "navbar":
+  {
+    "title": "Catálogo de Filmes",
+    "all_button": "Todos os Filmes",
+    "categoria_button": "Filmes por Categoria",
+    "change_language": "Mudar língua para: ",
+    "change_language_pt": "Mudar língua: Português BR",
+    "change_language_en": "Mudar língua: US English",
+    "high_contrast": "Alternar modo de alto contraste",
+    "font_increase": "Aumentar tamanho da fonte",
+    "font_decrease": "Diminuir tamanho da fonte",
+    "font_restore": "Restaurar tamanho da fonte",
+    "account": "Sua conta",
+    "manage": "Gerenciar",
+    "searchPlaceholder": "Buscar...",
+    "expandSearch": "Expandir campo de busca.",
+    "closeSearch": "Fechar campo de busca.",
+    "searchbarSr": "Campo de busca de filmes.",
+    "searchbarFilters": "Menu de filtros de busca.",
+    "clearSearch": "Limpar busca atual."
+  },
+  "pagination":
+  {
+    "next": "Próxima",
+    "prev": "Anterior",
+    "next_page": "Próxima página",
+    "prev_page": "Página anterior",
+    "sr_label": "Controles de paginação",
+    "sr_page_label": "página",
+    "sr_current_page": "Você está na página",
+    "sr_current_page_long": "Página {{page}} de {{total}}"
+  },
+  "error":
+  {
+    "error": "Erro",
+    "invalid": "inválido(a)",
+    "connection_error": "Erro de Conexão",
+    "connection_error_retry": "Ocorreu um erro de conexão, tentando novamente...",
+    "empty": "Parece que não tem nada aqui...",
+    "not_logged": "Usuário atual não está logado.",
+    "incorrect_credentials": "Credenciais incorretas.",
+    "deactivated_user": "Esse usuário está desativado.",
+    "incorrect_password": "Senha incorreta."
+  },
+  "error_page":
+  {
+    "title": "Opa!",
+    "subtitle": "Parece que aconteceu um problema tentando te conectar.",
+    "try_again": "Tente novamente mais tarde.",
+    "or": "Ou",
+    "try_again_now": "Tente novamente agora"
+  },
+  "info":
+  {
+    "filme_title": "Filme: ",
+    "filme_release": "Data de lançamento: ",
+    "filme_date": "{{d}} de {{m}} de {{y}}",
+    "filme_date_sm": "{{d}}/{{m}}/{{y}}",
+    "filme_categoria": "Categoria: ",
+    "filme_sinopse": "Sinopse: ",
+    "filme_image_label": "Pôster do filme: ",
+    "categoria_heading": "Filmes da categoria ",
+    "duration_h": "Duração: {{val}} horas.",
+    "duration_m": "Duração: {{val}} minutos.",
+    "duration_s": "Duração: {{val}} segundos.",
+    "date_format": "DD/MM/yyyy",
+    "pass_show": "Mostrar senha",
+    "pass_hide": "Esconder senha"
+  },
+  "navigation":
+  {
+    "login": "Entrar",
+    "login_long": "Realizar login",
+    "return": "Voltar para página anterior.",
+    "logout": "Sair",
+    "account_pref": "Preferências da conta",
+    "manage_categorias": "Gerenciar Categorias",
+    "manage_filmes": "Gerenciar Filmes",
+    "manage_usuarios": "Gerenciar Usuários"
+  },
+  "login_page":
+  {
+    "title": "Realizar login",
+    "user": "Usuário",
+    "pass": "Senha",
+    "user_field": "Campo de nome de usuário",
+    "password_field": "Campo de senha",
+    "login_btn": "Entrar"
+  },
+  "home_page":
+  {
+    "title": "Bem vindo(a) {{nome}}.",
+    "subtitle": "O que você deseja fazer agora?"
+  },
+  "manage_page":
+  {
+    "edit": "Editar",
+    "desativado": "Desativado",
+    "ativado": "Ativado",
+    "new_usuario": "Cadastrar novo usuário",
+    "usuario_register": "Usuário cadastrado com sucesso.",
+    "confirm": "Confirmar mudanças",
+    "save": "Salvar",
+    "access_categoria": "Tabela de gerenciamento de categorias.",
+    "access_usuario": "Tabela de gerenciamento de usuários.",
+    "column_of": "Coluna de {{col}}.",
+    "table_of": "Tabela de {{tab}}.",
+    "order_asc_by": "Ordernar de forma crescente por {{sort}}.",
+    "order_desc_by": "Ordernar de forma decrescente por {{sort}}."
+  },
+  "usuario":
+  {
+    "usuario": "Usuário",
+    "index": "Índice",
+    "nome": "Nome",
+    "username": "Nome de usuário",
+    "idioma": "Idioma",
+    "cpf": "CPF",
+    "telefone": "Telefone",
+    "email": "E-mail",
+    "senha": "Senha",
+    "desativado": "Desativado",
+    "create_form_title": "Cadastrar novo Usuário",
+    "create_form_subtitle": "Insira as informações do usuário"
+  },
+  "categoria":
+  {
+    "categoria": "Categoria",
+    "nome": "Nome",
+    "tag": "Tag",
+    "new_categoria": "Cadastrar nova categoria",
+    "new_categoria_subtitle": "Insira as informações da categoria",
+    "edit_categoria": "Editar Categoria",
+    "edit_categoria_subtitle": "Editar as informações da categoria",
+    "categoria_register": "Categoria cadastrada com sucesso",
+    "categoria_edited": "Categoria editada com sucesso"
+  },
+  "filme":
+  {
+    "filme": "Filme",
+    "titulo": "Título",
+    "sinopse": "Sinopse",
+    "dataLancamento": "Data de lançamento",
+    "data": "Data",
+    "duracao": "Duração",
+    "duracao_h": "Duração (h)",
+    "duracao_hours": "Horas",
+    "duracao_minutes": "Minutos",
+    "duracao_seconds": "Segundos",
+    "duracao_un": "Unidade",
+    "idioma": "Idioma",
+    "imagem": "Imagem ou pôster do filme",
+    "imagemAlt": "Descrição da imagem do pôster",
+    "ano": "Ano",
+    "new_filme": "Cadastrar novo filme",
+    "new_filme_subtitle": "Insira as informações do filme",
+    "edit_filme": "Editar Filme",
+    "edit_filme_subtitle": "Editar as informações do filme",
+    "filme_register": "Filme cadastrado com sucesso",
+    "filme_edited": "Filme editado com sucesso"
+  },
+  "update_usuario":
+  {
+    "success": "Informações atualizadas com sucesso.",
+    "current_password": "Sua senha atual",
+    "new_password": "Nova senha",
+    "confirm_password": "Confirmar nova senha",
+    "error_confirm_password": "Os campos de nova senha e confirmar senha devem ser iguais.",
+    "error_empty_fields": "Caso queira mudar sua senha os campos de nova senha e confirmar senha não devem estar vazios.",
+    "change_password": "Preencha os campos a seguir caso queira redefinir sua senha:"
+  }
+}

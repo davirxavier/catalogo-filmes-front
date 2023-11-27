@@ -1,0 +1,26 @@
+<div (keydown)="onInput($event)"
+  class="d-flex flex-row justify-content-between align-items-stretch m-2 app-card bg-primary filme-slider-container" [ngClass]="{'app-disabled': loading}">
+
+  <div class="order-1 w-100 h-100 bg-primary d-flex flex-column align-items-center justify-content-center">
+    <div #filmeContainer class="mt-3 w-100 h-100 d-flex flex-row flex-grow-1 p-2 pt-3 pb-3 ml-1 justify-content-around position-relative categoria-slider-filme-container" *ngIf="filmesPageable">
+      <app-filme-item #filmeItem *ngFor="let filme of filmesPageable.filmes" [filme]="filme" class="ml-2 mr-2"></app-filme-item>
+      <mat-spinner color="warn" class="position-absolute" *ngIf="loading"></mat-spinner>
+    </div>
+
+    <span class="text-white font-weight-normal mb-1 unselectable">{{getCurrentPage() + ' / ' + filmesPageable.totalPages}}</span>
+  </div>
+
+  <span class="sr-only" tabindex="0">{{ 'pagination.sr_current_page_long' | translate:{page: currentPage + 1, total: filmesPageable.totalPages} }}</span>
+  <div class="order-0 d-flex align-items-stretch justify-content-start pt-3 pb-3 categoria-slider-prev-container">
+    <button [ngClass]="{'app-disabled': prevDisabled}"
+            mat-flat-button
+            attr.aria-label="{{ 'pagination.prev_page' | translate }}"
+    (click)="onPrevClicked()"><mat-icon>arrow_left</mat-icon></button>
+  </div>
+  <div class="order-2 d-flex align-items-stretch justify-content-end pt-3 pb-3 categoria-slider-next-container">
+    <button [ngClass]="{'app-disabled': nextDisabled}"
+            mat-flat-button
+            attr.aria-label="{{ 'pagination.next_page' | translate }}"
+    (click)="onNextClicked()"><mat-icon>arrow_right</mat-icon></button>
+  </div>
+</div>

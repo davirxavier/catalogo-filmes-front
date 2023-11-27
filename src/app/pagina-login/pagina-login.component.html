@@ -1,0 +1,40 @@
+<div class="bg-primary w-100 h-100 d-flex align-items-center justify-content-center">
+  <div class="bg-white w-fit-content p-5 d-flex flex-column card app-card login-container"
+       [ngClass]="{ 'app-disabled': loading }"
+       attr.aria-label="{{ 'Página de login' }}"
+       tabindex="0">
+
+    <!-- TODO Acessibilidade -->
+    <h2 class="align-text-center">
+      {{ 'navbar.title' | translate }}<br>
+    </h2>
+
+    <mat-form-field color="" appearance="outline" class="mt-2">
+      <mat-label>{{ 'login_page.user' | translate }}</mat-label>
+      <label for="usuarioInput" class="sr-only">{{ 'login_page.user' | translate }}</label>
+      <input (keydown.enter)="onLogin()" matInput id="usuarioInput" #usuarioInput
+             attr.aria-label="{{ 'login_page.user_field' | translate }}">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="mt-n2">
+      <mat-label>{{ 'login_page.pass' | translate }}</mat-label>
+      <label for="senhaInput" class="sr-only">{{ 'login_page.pass' | translate }}</label>
+      <input (keydown.enter)="onLogin()" matInput id="senhaInput" #passInput
+             [type]="hideSenha ? 'password' : 'text'"
+             attr.aria-label="{{ 'login_page.password_field' | translate }}">
+      <button mat-icon-button matSuffix (click)="hideSenha = !hideSenha"
+        attr.aria-label="{{ (hideSenha ? 'info.pass_show' : 'info.pass_hide') | translate }}">
+        <mat-icon>{{ hideSenha ? 'visibility' : 'visibility_off' }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" class="mb-n2 mt-2"
+            attr.aria-label="{{ 'login_page.login_btn' | translate }}"
+            (click)="onLogin()">
+      {{ 'login_page.login_btn' | translate }}
+    </button>
+
+  </div>
+
+  <mat-spinner [hidden]="!loading" class="position-absolute position-absolute-center"></mat-spinner>
+</div>

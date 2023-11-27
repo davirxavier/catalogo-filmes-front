@@ -1,0 +1,50 @@
+<div id="main-filme-container" class="w-100 h-100 nhc-div">
+  <div id="imagem-container" class="h-100 w-50 overflow-hidden position-absolute position-absolute-right unselectable"
+       style="z-index: -1; background-color: black">
+    <img class="fit-cover w-100 h-100 ml-auto"
+         [src]="sanitizedImage" alt="{{filme && filme.imagemAlt || ''}}">
+  </div>
+
+  <div class="h-100 w-100 d-flex flex-grow-1 background-container">
+    <button mat-fab color="primary" routerLink="filmes" id="back-btn"
+            *ngIf="lastUrl && lastUrl.length > 0"
+            attr.aria-label="{{ 'navigation.return' | translate }}"
+            (click)="onNavigate()"
+            class="mb-4 ml-3 h-fit-content bg-transparent" style="margin-top: 75px">
+      <mat-icon class="big-mat-icon">arrow_back</mat-icon>
+    </button>
+
+    <div id="text-container" class="w-50 text-white d-flex flex-column justify-content-around" *ngIf="filme">
+
+      <h1 class="display-1 w-50 mt-4 align-self-center" tabindex="0">
+        <strong class="float-right"
+                attr.aria-label="{{ ('info.filme_title' | translate) + (filme.titulo) + '.' }}">
+          {{filme.titulo}}
+        </strong><br>
+        <small class="float-right"
+               attr.aria-label="{{ ('info.filme_categoria' | translate) + (filme.categoria.nome) + '.' }}">
+          {{filme.categoria.nome}}
+        </small>
+        <small class="text-muted float-left"
+               attr.aria-label="{{ ('info.filme_release' | translate) + ('info.filme_date' | translate:{d: getDataLancamentoDay(), m: getDataLancamentoMonth(), y: getDataLancamentoYear()}) + '.' }}">
+          {{ 'info.filme_date' | translate:{d: getDataLancamentoDay(), m: getDataLancamentoMonth(), y: getDataLancamentoYear()} }}
+        </small>
+      </h1>
+
+      <h2 class="w-50 ml-auto" id="sinopse-container">
+        <small class="text-white" tabindex="0"
+               attr.aria-label="{{ ('info.filme_sinopse' | translate) + (filme.sinopse) + '.' }}">
+          {{filme.sinopse}}
+        </small><br>
+        <small class="text-muted" tabindex="0">
+          {{ filme.duracao }}
+        </small>
+      </h2>
+
+    </div>
+  </div>
+
+  <span class="sr-only" tabindex="0" *ngIf="filme && filme.imagemAlt">
+    {{ ('info.filme_image_label' | translate) + (filme.imagemAlt) }}
+  </span>
+</div>

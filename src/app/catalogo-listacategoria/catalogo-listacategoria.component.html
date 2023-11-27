@@ -1,0 +1,21 @@
+<div id="listacategoria-container" class="d-flex flex-column p-2 h-100 overflow-auto position-relative">
+  <div tabindex="0"
+       attr.aria-label="{{ 'info.categoria_heading' | translate }}{{categoria.nome}}"
+       *ngFor="let categoria of categorias; let i = index" class="m-2 pl-4 font-weight-bold categoria-slider-container">
+    <div [hidden]="!categoria.hasFilmes">
+      <hr>
+
+      <h3 class="font-weight-bold">{{categoria.nome}}</h3>
+      <app-categoria-slider
+        [categoriaId]="categoria.id"
+        [filmeComponentWidth]="filmeWidth"
+        (hasFilmesEvent)="onCategoriaHasFilmes(categoria)"></app-categoria-slider>
+    </div>
+  </div>
+
+  <div [hidden]="!empty" class="position-absolute position-absolute-center w-fit-content h-fit-content">
+    <mat-icon class="big-mat-icon unselectable" style="font-size: 15em">search_off</mat-icon>
+    <h1>{{ 'error_page.title' | translate }}</h1>
+    <h2 class="font-weight-normal">{{ 'error.empty' | translate }}</h2>
+  </div>
+</div>

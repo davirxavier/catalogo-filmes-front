@@ -1,0 +1,36 @@
+@import '../../styles'
+
+$breakpoint-small: 440px
+$control-width: 20%
+
+swiper
+  border-radius: 2px
+
+::ng-deep
+  .swiper-button-next, .swiper-button-prev
+    height: 90% !important
+    width: 40px !important
+    margin: -8.4% 0 0 0 !important
+    @extend .btn
+    @extend .btn-light
+
+  @media (max-width: $breakpoint-small)
+    .categoria-slider-prev-container > button
+      width: $control-width !important
+      min-width: $control-width !important
+
+    .categoria-slider-next-container > button
+      width: $control-width !important
+      min-width: $control-width !important
+
+    .categoria-slider-next-container
+      background-color: $primary
+
+    .categoria-slider-filme-container
+      margin-left: 0 !important
+      margin-right: 0 !important
+
+
+@media (max-width: $breakpoint-small)
+  .categoria-slider-container
+    margin-left: -20px !important

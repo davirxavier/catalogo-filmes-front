@@ -1,0 +1,80 @@
+<div id="filme-form-container" class="d-flex align-items-center justify-content-center w-100 h-100">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex flex-column card p-4 pl-5 pr-5">
+
+    <div *ngIf="filme" class="align-text-center d-flex flex-column">
+      <span class="font-weight-bold">{{ 'filme.edit_filme' | translate }}</span>
+      <span class="text-muted">{{ 'filme.edit_filme_subtitle' | translate }}</span>
+    </div>
+    <div *ngIf="!filme" class="align-text-center d-flex flex-column">
+      <span class="font-weight-bold">{{ 'filme.new_filme' | translate }}</span>
+      <span class="text-muted">{{ 'filme.new_filme_subtitle' | translate }}</span>
+    </div>
+    <hr>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'filme.titulo' | translate }}</mat-label>
+      <input matInput type="text" formControlName="titulo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'filme.sinopse' | translate }}</mat-label>
+      <textarea matInput type="text" formControlName="sinopse"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'filme.dataLancamento' | translate }}</mat-label>
+      <input matInput type="text" formControlName="dataLancamento" disabled
+             [matDatepicker]="dataLancamentoPicker">
+      <mat-datepicker-toggle matSuffix [for]="dataLancamentoPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dataLancamentoPicker startView="multi-year" disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="mt-n2" appearance="outline">
+      <mat-label>Idioma</mat-label>
+      <mat-select formControlName="idioma">
+        <mat-option *ngFor="let lang of languages; let i = index"
+                    [value]="i+1">{{ lang.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mt-n2" appearance="outline">
+      <mat-label>{{ 'categoria.categoria' | translate }}</mat-label>
+      <mat-select formControlName="categoria">
+        <mat-option *ngFor="let cat of categorias"
+                    [value]="cat.id">{{ cat.nome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'filme.imagem' | translate }}</mat-label>
+      <ngx-mat-file-input formControlName="imagem"
+                          accept=".jpg, .jpeg, .png, .gif, .tif"
+                          (change)="onImagemChange($event)"
+                          placeholder="{{ 'filme.imagem' | translate }}"></ngx-mat-file-input>
+      <mat-icon matSuffix class="unselectable">folder</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'filme.imagemAlt' | translate }}</mat-label>
+      <input matInput type="text" formControlName="imagemAlt">
+    </mat-form-field>
+
+    <div>
+      <mat-form-field appearance="outline" class="ml">
+        <mat-label>{{ 'filme.duracao' | translate }}</mat-label>
+        <input matInput type="number" formControlName="duracao">
+      </mat-form-field>
+
+      <mat-form-field class="ml-2" appearance="outline">
+        <mat-label>{{ 'filme.duracao_un' | translate }}</mat-label>
+        <mat-select formControlName="duracaoUnit">
+          <mat-option *ngFor="let un of duracaoUnits; let i = index"
+                      [value]="un.value">{{ un.name | translate }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary"
+            [disabled]="form.pristine || form.invalid">{{ (filme ? 'manage_page.confirm' : 'manage_page.save') | translate }}</button>
+  </form>
+</div>

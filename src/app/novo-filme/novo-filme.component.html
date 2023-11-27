@@ -1,0 +1,12 @@
+<div class="bg-primary w-100 h-100 mh-100 overflow-auto position-relative">
+  <app-filme-form (submitForm)="onSubmitForm($event)" dateFormat="{{ 'info.date_format' | translate }}"></app-filme-form>
+
+  <mat-spinner [hidden]="true" class="position-absolute position-absolute-center"></mat-spinner>
+
+  <button mat-fab color="white" matTooltip="{{ 'navigation.return' | translate }}"
+          routerLink="/gerencia/filmes"
+          class="position-fixed position-absolute-top position-absolute-left ml-3" style="margin-top: 80px">
+    <mat-icon class="big-mat-icon">arrow_back</mat-icon>
+  </button>
+</div>
+

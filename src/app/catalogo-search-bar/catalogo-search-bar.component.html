@@ -1,0 +1,22 @@
+<div #div class="w-100 h-100 d-flex justify-content-between align-items-center">
+  <button mat-icon-button *ngIf="expanded" class="bg-light not-dark-hc"
+          (click)="onClear(input)"
+          [attr.aria-label]="clearFieldSr">
+    <mat-icon class="text-black-important">search_off</mat-icon>
+  </button>
+  <input #input type="text" [attr.aria-label]="searchbarSrText" [attr.tabindex]="expanded ? 0 : -1"
+         (keydown.enter)="onSearch(input.value)"
+         (input)="onSearch(input.value)" [placeholder]="placeholderText || ''">
+  <app-catalogo-dropdown class="text-black-important"
+                         [content]="filters"
+                         [actAsSelect]="true"
+                         [buttonIconName]="'arrow_drop_down'"
+                         (clickEvent)="onFilterChange($event)"
+                         [buttonAriaLabel]="filtersSrText"
+                         *ngIf="filters.length > 0 && expanded"></app-catalogo-dropdown>
+  <button mat-icon-button class="bg-light not-dark-hc"
+          [attr.aria-label]="expanded ? closeLabel : expandLabel"
+          (click)="onExpandClick(div, input)">
+    <mat-icon class="text-black-important">{{ expanded ? 'close' : 'search' }}</mat-icon>
+  </button>
+</div>

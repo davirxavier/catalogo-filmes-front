@@ -1,0 +1,67 @@
+@import "../../colors"
+
+$breakpoint-small: 1040px
+$breakpoint-smaller: 700px
+$breakpoint-smallest: 500px
+
+a
+  text-decoration: none
+  color: white
+
+.navbar-list
+  list-style-type: none
+  padding: 0
+  margin: 0
+
+.nav-container
+  background-color: $primary
+  height: 65px
+  color: white
+  display: flex
+  flex-direction: row
+  align-items: center
+  padding: 0 12px 0 12px
+  position: relative
+  z-index: 999
+
+#navbar-title
+  margin: auto 0 auto 0
+  white-space: nowrap
+
+#navmenu-container > app-catalogo-dropdown
+  display: none
+
+#config-dropdown-container
+  display: none
+
+@media (max-width: $breakpoint-small)
+  #link-container
+    display: none !important
+
+  #navmenu-container > app-catalogo-dropdown
+    display: block !important
+
+@media (max-width: $breakpoint-smaller)
+  .nav-container
+    align-items: center
+    justify-content: center
+    padding-top: 5px
+
+  #navbar-title
+    margin-right: auto
+    margin-bottom: 10px
+    display: none
+
+  #navmenu-container > app-catalogo-dropdown
+    margin-right: auto
+
+@media (max-width: $breakpoint-smallest)
+  #navconfig-list li
+    display: none
+
+  #config-dropdown-container
+    display: unset !important
+
+
+
+

@@ -1,0 +1,27 @@
+<div class="w-100 h-100 mw-100 mh-100 p-4 pt-5 bg-primary position-relative">
+  <button mat-flat-button class="position-absolute position-absolute-right position-absolute-top mr-4"
+          id="nova-categoria-button"
+          routerLink="/gerencia/novofilme">
+    <mat-icon>add_box</mat-icon>
+    {{ 'filme.new_filme' | translate }}
+  </button>
+
+  <app-catalogo-table class="w-100 h-100 card pl-3 pr-3 pt-1 pb-1"
+                      caption="{{ 'manage_page.access_categoria' | translate }}"
+                      [columns]="cols"
+                      [hasIndexColumn]="true"
+                      [indexColumnName]="'usuario.index' | translate"
+                      (editOnClick)="onEditClick($event)"
+                      (toggleOnClick)="onDesativarClick($event)"
+                      (currentPageChange)="onTablePageChanged($event)"
+                      (sortColumn)="onTableSort($event)"
+                      [disableDefaultSorting]="true"
+                      [currentPage]="currentPage"
+                      [pageSize]="pageSize"
+                      [totalItems]="totalItems"
+                      [tableName]="'filme.filme' | translate"
+                      [toggleColumn]="{ name: ('manage_page.ativado' | translate), propertyKey: 'desativado' }"
+                      [editColumn]="{ name: ('manage_page.edit' | translate), propertyKey: null }"
+                      [rows]="filmes"></app-catalogo-table>
+
+</div>

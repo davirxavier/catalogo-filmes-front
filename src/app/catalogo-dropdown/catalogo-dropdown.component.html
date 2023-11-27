@@ -1,0 +1,21 @@
+<div class="catalogo-dropdown" appOutsideClick (outsideClickEvent)="close(undefined)">
+  <button mat-button [attr.aria-label]="buttonAriaLabel"
+          (click)="show()" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+    <span *ngIf="buttonText !== undefined || actAsSelect">{{ (actAsSelect) ? (content[selectedIndex] | translate) : buttonText }}</span>
+    <mat-icon *ngIf="buttonIconName !== undefined">{{buttonIconName}}</mat-icon>
+  </button>
+
+  <div class="dropdown-content card mb-2" [ngClass]="{ 'position-absolute-right': rightAligned }"
+       (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()"
+       [ngStyle]="{'display': display}">
+    <div *ngIf="header"
+      class="header-container d-flex flex-column align-items-center justify-content-center mt-3 ml-auto mr-auto pl-2 pr-2">
+      <span class="header-title font-weight-bold" [innerHTML]="header.title"></span>
+      <span class="text-muted" [innerHTML]="header.subtitle"></span>
+    </div>
+
+    <hr *ngIf="header">
+    <button mat-button *ngFor="let link of content; let i = index"
+            (click)="close(i)" [innerHTML]="link | translate"></button>
+  </div>
+</div>

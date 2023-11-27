@@ -1,0 +1,26 @@
+<div class="w-100 h-100 mw-100 mh-100 p-4 pt-5 bg-primary position-relative">
+
+  <button mat-flat-button class="position-absolute position-absolute-right position-absolute-top mr-4"
+          id="novo-usuario-button"
+          routerLink="/gerencia/novousuario">
+    <mat-icon>add_box</mat-icon>
+    {{ 'manage_page.new_usuario' | translate }}
+  </button>
+
+  <app-catalogo-table class="w-100 h-100 card pl-3 pr-3 pt-1 pb-1" [columns]="cols"
+                      [hasIndexColumn]="true"
+                      [indexColumnName]="'usuario.index' | translate"
+                      (editOnClick)="onEditClick($event)"
+                      (toggleOnClick)="onDesativarClick($event)"
+                      [toggleColumn]="{ name: ('manage_page.ativado' | translate), propertyKey: 'desativado' }"
+                      [editColumn]="{ name: ('manage_page.edit' | translate), propertyKey: null }"
+                      [isRowEditable]="isRowEditable()"
+                      [isColumnSortable]="isColumnSortable()"
+                      [(currentPage)]="currentPage"
+                      (currentPageChange)="onPageChange()"
+                      [(pageSize)]="pageSize"
+                      [totalItems]="usuarios.length"
+                      [tableName]="'usuario.usuario' | translate"
+                      [rows]="usuarios"></app-catalogo-table>
+
+</div>

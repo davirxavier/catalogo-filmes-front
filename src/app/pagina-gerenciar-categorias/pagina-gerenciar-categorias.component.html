@@ -1,0 +1,25 @@
+<div class="w-100 h-100 mw-100 mh-100 p-4 pt-5 bg-primary position-relative">
+  <button mat-flat-button class="position-absolute position-absolute-right position-absolute-top mr-4"
+          id="nova-categoria-button"
+          routerLink="/gerencia/novacategoria">
+    <mat-icon>add_box</mat-icon>
+    {{ 'categoria.new_categoria' | translate }}
+  </button>
+
+  <app-catalogo-table class="w-100 h-100 card pl-3 pr-3 pt-1 pb-1"
+                      caption="{{ 'manage_page.access_categoria' | translate }}"
+                      [columns]="cols"
+                      [hasIndexColumn]="true"
+                      [indexColumnName]="'usuario.index' | translate"
+                      (editOnClick)="onEditClick($event)"
+                      (toggleOnClick)="onDesativarClick($event)"
+                      [(currentPage)]="currentPage"
+                      (currentPageChange)="onPageChanged()"
+                      [(pageSize)]="pageSize"
+                      [totalItems]="categorias.length"
+                      [tableName]="'categoria.categoria' | translate"
+                      [toggleColumn]="{ name: ('manage_page.ativado' | translate), propertyKey: 'desativado' }"
+                      [editColumn]="{ name: ('manage_page.edit' | translate), propertyKey: null }"
+                      [rows]="categorias"></app-catalogo-table>
+
+</div>

@@ -1,0 +1,7 @@
+<header [ngClass]="{ 'app-disabled' : loading }"><app-catalogo-navbar></app-catalogo-navbar></header>
+
+<div role="main" id="main-container" [ngClass]="{ 'app-disabled' : loading }">
+  <router-outlet></router-outlet>
+
+  <mat-spinner *ngIf="loading" class="position-absolute position-absolute-center"></mat-spinner>
+</div>

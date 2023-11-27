@@ -1,0 +1,35 @@
+<div class="d-flex align-items-center justify-content-center w-100 h-100">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="d-flex flex-column card p-4 pl-5 pr-5">
+
+    <div *ngIf="categoria" class="align-text-center d-flex flex-column">
+      <span class="font-weight-bold">{{ 'categoria.edit_categoria' | translate }}</span>
+      <span class="text-muted">{{ 'categoria.edit_categoria_subtitle' | translate }}</span>
+    </div>
+    <div *ngIf="!categoria" class="align-text-center d-flex flex-column">
+      <span class="font-weight-bold">{{ 'categoria.new_categoria' | translate }}</span>
+      <span class="text-muted">{{ 'categoria.new_categoria_subtitle' | translate }}</span>
+    </div>
+    <hr>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" formControlName="nome">
+    </mat-form-field>
+
+    <mat-form-field class="mt-n2" appearance="outline">
+      <mat-label>Abreviação do Nome</mat-label>
+      <input matInput type="text" formControlName="tag">
+    </mat-form-field>
+
+    <mat-form-field class="mt-n2" appearance="outline">
+      <mat-label>Idioma</mat-label>
+      <mat-select formControlName="idioma">
+        <mat-option *ngFor="let lang of languages; let i = index"
+                    [value]="i+1">{{ lang.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+            [disabled]="form.pristine || form.invalid">{{ (categoria ? 'manage_page.confirm' : 'manage_page.save') | translate }}</button>
+  </form>
+</div>

@@ -1,0 +1,173 @@
+{
+  "navbar":
+  {
+    "title": "Movie Catalog",
+    "all_button": "All Movies",
+    "categoria_button": "Movies by Genre",
+    "change_language": "Change language to: ",
+    "change_language_pt": "Change Language: Português BR",
+    "change_language_en": "Change Language: US English",
+    "high_contrast": "Alternate high contrast mode",
+    "font_increase": "Increase font size",
+    "font_decrease": "Decrease font size",
+    "font_restore": "Restore font size to default",
+    "account": "Your account",
+    "manage": "Manage",
+    "searchPlaceholder": "Search...",
+    "expandSearch": "Expand search field.",
+    "closeSearch": "Close search field.",
+    "searchbarSr": "Movie search bar.",
+    "searchbarFilters": "Search filter menu.",
+    "clearSearch": "Clear the current search."
+  },
+  "pagination":
+  {
+    "next": "Next",
+    "prev": "Previous",
+    "next_page": "Next page",
+    "prev_page": "Previous page",
+    "sr_label": "Pagination controls",
+    "sr_page_label": "page",
+    "sr_current_page": "You are on page",
+    "sr_current_page_long": "Page {{page}} of {{total}}"
+  },
+  "error":
+  {
+    "error": "Error",
+    "invalid": "is invalid",
+    "connection_error": "Connection Error",
+    "connection_error_retry": "A connection error has ocurred, trying again...",
+    "empty": "Looks like we have nothing here...",
+    "not_logged": "Current user is not logged in.",
+    "incorrect_credentials": "Incorrect credentials.",
+    "deactivated_user": "This user is deactivated.",
+    "incorrect_password": "Incorrect password."
+  },
+  "error_page":
+  {
+    "title": "Oops!",
+    "subtitle": "Seems like there was a problem connecting you.",
+    "try_again": "Try again later.",
+    "or": "Or",
+    "try_again_now": "Try again now"
+  },
+  "info":
+  {
+    "filme_title": "Movie: ",
+    "filme_release": "Release date: ",
+    "filme_date": "{{m}} {{d}}, {{y}}",
+    "filme_date_sm": "{{m}}-{{d}}-{{y}}",
+    "filme_categoria": "Genre: ",
+    "filme_sinopse": "Summary: ",
+    "filme_image_label": "Poster of the movie: ",
+    "categoria_heading": "Movies in this genre  ",
+    "duration_h": "Duration: {{val}} hours.",
+    "duration_m": "Duration: {{val}} minutes.",
+    "duration_s": "Duration: {{val}} seconds.",
+    "date_format": "MM-DD-yyyy",
+    "pass_show": "Show password",
+    "pass_hide": "Hide password"
+  },
+  "navigation":
+  {
+    "login": "Log in",
+    "login_long": "Log in with your account",
+    "return": "Go back to previous page.",
+    "logout": "Log out",
+    "account_pref": "Account preferences",
+    "manage_categorias": "Manage Genres",
+    "manage_filmes": "Manage Movies",
+    "manage_usuarios": "Manage Users"
+  },
+  "login_page":
+  {
+    "title": "Log in",
+    "user": "Username",
+    "pass": "Password",
+    "user_field": "Username input",
+    "password_field": "Password input",
+    "login_btn": "Sign in"
+  },
+  "home_page":
+  {
+    "title": "Welcome {{nome}}.",
+    "subtitle": "What would you like to do now?"
+  },
+  "manage_page":
+  {
+    "edit": "Edit",
+    "desativado": "Deactivated",
+    "ativado": "Activated",
+    "new_usuario": "Register new user",
+    "usuario_register": "User registered successfully.",
+    "confirm": "Confirm changes",
+    "save": "Save changes",
+    "access_categoria": "Genre management table.",
+    "access_usuario": "User management table.",
+    "column_of": "{{col}} column.",
+    "table_of": "{{tab}} table.",
+    "order_asc_by": "Order ascending by {{sort}}.",
+    "order_desc_by": "Order descending by {{sort}}."
+  },
+  "usuario":
+  {
+    "usuario": "User",
+    "index": "Index",
+    "nome": "Name",
+    "username": "Username",
+    "idioma": "Language",
+    "cpf": "CPF",
+    "telefone": "Phone",
+    "email": "E-mail",
+    "senha": "Password",
+    "desativado": "Deactivated",
+    "create_form_title": "Register new User",
+    "create_form_subtitle": "Fill in the User's info"
+  },
+  "categoria":
+  {
+    "categoria": "Genre",
+    "nome": "Name",
+    "tag": "Tag",
+    "new_categoria": "Register new Genre",
+    "new_categoria_subtitle": "Fill in the Genre's info",
+    "edit_categoria": "Edit Genre",
+    "edit_categoria_subtitle": "Edit the Genre's info",
+    "categoria_register": "Genre registered successfully.",
+    "categoria_edited": "Genre edited successfully"
+  },
+  "filme":
+  {
+    "filme": "Movie",
+    "titulo": "Title",
+    "sinopse": "Synopsis",
+    "dataLancamento": "Release date",
+    "data": "Date",
+    "duracao": "Duration",
+    "duracao_h": "Duration (h)",
+    "duracao_hours": "Hours",
+    "duracao_minutes": "Minutes",
+    "duracao_seconds": "Seconds",
+    "duracao_un": "Unit",
+    "idioma": "Language",
+    "imagem": "Movie's thumbnail or poster",
+    "imagemAlt": "Description of poster image",
+    "ano": "Year",
+    "new_filme": "Register new movie",
+    "new_filme_subtitle": "Fill in the movie's info",
+    "edit_filme": "Edit movie",
+    "edit_filme_subtitle": "Edit the movie's info",
+    "filme_register": "Movie registered successfully",
+    "filme_edited": "Movie edited successfully"
+  },
+  "update_usuario":
+  {
+    "success": "Information updated successfully.",
+    "current_password": "Your current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm new password",
+    "error_confirm_password": "The new password and confirm password fields should be equal.",
+    "error_empty_fields": "If you would like to change your password the new password and confirm password fields should not be empty.",
+    "change_password": "Fill the fields below if you would like to change your password:"
+  }
+}

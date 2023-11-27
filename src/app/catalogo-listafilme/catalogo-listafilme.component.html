@@ -1,0 +1,20 @@
+<div
+  class="d-flex flex-column justify-content-between align-items-center w-100 h-100">
+  <div
+    (resized)="onResize($event)"
+    class="d-flex flex-wrap justify-content-center align-items-center overflow-auto w-100 h-100">
+    <app-filme-item *ngFor="let filme of filmes | paginate: {itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalItemsCount}"
+                    [filme]="filme"
+                    [ngStyle]="filmeMargins()"></app-filme-item>
+
+  </div>
+
+  <pagination-controls (pageChange)="onPageChange($event)"
+                       class="mt-2 mb-1 ml-n4"
+                       responsive="true"
+                       nextLabel="{{ 'pagination.next' | translate }}"
+                       previousLabel="{{ 'pagination.prev' | translate }}"
+                       screenReaderPaginationLabel="{{'pagination.sr_label' | translate}}"
+                       screenReaderPageLabel="{{'pagination.sr_page_label' | translate}}"
+                       screenReaderCurrentLabel="{{'pagination_sr_current_page' | translate}}"></pagination-controls>
+</div>

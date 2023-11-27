@@ -1,0 +1,20 @@
+<div class="bg-primary w-100 h-100 d-flex align-items-center justify-content-center">
+  <div class="bg-white w-fit-content p-5 d-flex flex-column card app-card login-container">
+
+    <div tabindex="0">
+      <h2 class="align-text-center">
+        {{ 'navbar.title' | translate }}<br>
+        <small>{{ 'home_page.title' | translate:{nome: currentUser && currentUser.nome || ''} }}</small><br>
+      </h2>
+
+      <h4 class="align-text-center">
+        {{ 'home_page.subtitle' | translate }}
+      </h4>
+    </div>
+
+    <a mat-button class="mt-3" routerLink="/gerencia/filmes">{{ 'navigation.manage_filmes' | translate }}</a>
+    <a mat-button class="mt-3" routerLink="/gerencia/categorias">{{ 'navigation.manage_categorias' | translate }}</a>
+    <a mat-button class="mt-3" routerLink="/gerencia/usuarios">{{ 'navigation.manage_usuarios' | translate }}</a>
+
+  </div>
+</div>

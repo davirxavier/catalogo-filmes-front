@@ -1,0 +1,106 @@
+<div id="usuarioform-container" class="d-flex align-items-center justify-content-center">
+  <div class="bg-white w-fit-content p-4 mt-2 mb-2 d-flex flex-column card app-card login-container" style="max-width: 460px">
+    <div *ngIf="usuario" class="d-flex flex-row justify-content-between align-items-center">
+      <mat-icon class="big-mat-icon" style="font-size: 10em">account_circle</mat-icon>
+
+      <div class="ml-4 align-text-right">
+        <span class="font-weight-bold">{{ usuario.nome }}</span><br>
+        <span class="text-muted">{{ usuario.username }}</span>
+      </div>
+    </div>
+
+    <div class="align-text-center" *ngIf="!usuario">
+      <span class="font-weight-bold">{{ 'usuario.create_form_title' | translate }}</span><br>
+      <span class="text-muted">{{ 'usuario.create_form_subtitle' | translate }}</span>
+    </div>
+    <hr>
+
+    <form [formGroup]="form" class="d-flex flex-column" (ngSubmit)="onSubmit()">
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'usuario.nome' | translate }}</mat-label>
+        <input matInput formControlName="nome">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="!usuario">
+        <mat-label>{{ 'usuario.username' | translate }}</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+
+      <div>
+        <mat-form-field appearance="outline" class="mr-2">
+          <mat-label>{{ 'usuario.email' | translate }}</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'usuario.idioma' | translate }}</mat-label>
+          <mat-select formControlName="idioma">
+            <mat-option *ngFor="let lang of languages; let i = index"
+                        [value]="i+1">{{ lang.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline" class="mr-2">
+          <mat-label>{{ 'usuario.cpf' | translate }}</mat-label>
+          <input matInput formControlName="cpf" mask="000.000.000-00">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'usuario.telefone' | translate }}</mat-label>
+          <input matInput formControlName="telefone" [mask]="telefoneMask">
+        </mat-form-field>
+      </div>
+
+<!--      <mat-form-field appearance="outline" *ngIf="usuario">-->
+<!--        <mat-label>{{ 'update_usuario.current_password' | translate }}</mat-label>-->
+<!--        <input matInput [type]="hideSenha ? 'password' : 'text'" formControlName="senhaAtual">-->
+<!--        <button mat-icon-button matSuffix type="button" (click)="hideSenha = !hideSenha"-->
+<!--                attr.aria-label="{{ (hideSenha ? 'info.pass_show' : 'info.pass_hide') | translate }}">-->
+<!--          <mat-icon>{{ hideSenha ? 'visibility' : 'visibility_off' }}</mat-icon>-->
+<!--        </button>-->
+<!--      </mat-form-field>-->
+
+      <div *ngIf="usuario">
+        <mat-divider class="mb-3"></mat-divider>
+        <span class="mb-2" tabindex="0"><strong>{{ 'update_usuario.change_password' | translate }}</strong></span>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'update_usuario.new_password' | translate }}</mat-label>
+        <input matInput [type]="hideSenhaNova ? 'password' : 'text'" formControlName="senhaNova">
+        <button mat-icon-button matSuffix type="button" (click)="hideSenhaNova = !hideSenhaNova"
+                attr.aria-label="{{ (hideSenhaNova ? 'info.pass_show' : 'info.pass_hide') | translate }}">
+          <mat-icon>{{ hideSenhaNova ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'update_usuario.confirm_password' | translate }}</mat-label>
+        <input matInput [type]="hideConfirmarSenha ? 'password' : 'text'" formControlName="confirmarSenha">
+        <button mat-icon-button matSuffix type="button" (click)="hideConfirmarSenha = !hideConfirmarSenha"
+                attr.aria-label="{{ (hideConfirmarSenha ? 'info.pass_show' : 'info.pass_hide') | translate }}">
+          <mat-icon>{{ hideConfirmarSenha ? 'visibility' : 'visibility_off' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <ul class="font-weight-bold" tabindex="0" *ngIf="form.errors">
+        <li *ngIf="form.hasError(passFieldsError) && usuario" class="text-danger mt-2">
+          <mat-error>{{ getErrorMessage(passFieldsError) }}</mat-error>
+        </li>
+        <li *ngIf="form.hasError(errorConfirmPassword)" class="text-danger mt-2">
+          <mat-error>{{ getErrorMessage(errorConfirmPassword) }}</mat-error>
+        </li>
+      </ul>
+
+      <button mat-raised-button type="submit" color="primary"
+              [disabled]="form.pristine || form.invalid">{{ (usuario ? 'manage_page.confirm' : 'manage_page.save') | translate }}</button>
+
+    </form>
+
+  </div>
+
+  <mat-spinner [hidden]="true" class="position-absolute position-absolute-center"></mat-spinner>
+</div>

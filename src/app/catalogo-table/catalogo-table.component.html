@@ -1,0 +1,77 @@
+<div class="h-100 w-100 d-flex flex-column justify-content-between">
+  <div class="w-100 h-100 mh-100 overflow-auto">
+    <table style="width: 98%" class="ml-auto mr-auto" [ngClass]="{'h-100': totalItems >= 10}"
+           tabindex="0" [attr.aria-label]="'manage_page.table_of' | translate:{tab: tableName}">
+      <caption class="sr-only">{{ caption ? caption : '' }}</caption>
+      <tr class="table-row">
+        <th scope="col" *ngIf="hasIndexColumn"
+            tabindex="0" [attr.aria-label]="'manage_page.column_of' | translate:{col:indexColumnName}"
+            class="text-muted font-weight-normal">
+          {{ indexColumnName }}
+        </th>
+
+        <th scope="col" *ngFor="let column of columns"
+            tabindex="0" [attr.aria-label]="'manage_page.column_of' | translate:{col:column.name}"
+            class="text-muted font-weight-normal">
+          <button mat-flat-button
+                  [attr.aria-label]="(currentSortedProperty === column.propertyKey && !doubleCurrentSort) ? ('manage_page.order_desc_by' | translate:{sort:column.name}) : ('manage_page.order_asc_by' | translate:{sort:column.name})"
+                  (click)="onSort(column.propertyKey)" *ngIf="isColumnSortable(column)" class="ml-n3">
+            {{ column.name }}
+            <mat-icon matSuffix *ngIf="currentSortedProperty === column.propertyKey">
+              {{ (doubleCurrentSort) ? 'arrow_drop_down' : 'arrow_drop_up' }}
+            </mat-icon>
+          </button>
+          {{ isColumnSortable(column) ? '' : column.name }}
+        </th>
+
+        <th scope="col" *ngIf="toggleColumn"
+            tabindex="0" [attr.aria-label]="'manage_page.column_of' | translate:{col:toggleColumn.name}"
+            class="text-muted font-weight-normal">
+          {{ toggleColumn.name }}
+        </th>
+
+        <th scope="col" *ngIf="editColumn"
+            tabindex="0" [attr.aria-label]="'manage_page.column_of' | translate:{col:editColumn.name}"
+            class="text-muted font-weight-normal">
+          {{ editColumn.name }}
+        </th>
+      </tr>
+      <tr *ngFor="let row of rows | paginate: {itemsPerPage: pageSize, currentPage: currentPage, totalItems: totalItems}; let i = index" [ngClass]="{ 'app-disabled': !isRowEditable(row) }">
+        <td tabindex="0" [attr.aria-label]="indexColumnName + ((i + 1) + ((currentPage - 1) * pageSize))"
+          *ngIf="hasIndexColumn" [innerHTML]="(i + 1) + ((currentPage - 1) * pageSize)">
+        </td>
+
+        <td tabindex="0" [attr.aria-label]="columns[j].name + ': ' + row[prop]"
+          *ngFor="let prop of getRowProperties(); let j = index" [innerHTML]="row[prop]">
+        </td>
+
+        <td
+          *ngIf="toggleColumn">
+          <mat-slide-toggle [aria-label]="toggleColumn.name"
+                            [checked]="row[toggleColumn.propertyKey]" [disabled]="!isRowEditable(row)"
+                            (change)="onToggleClicked($event, row, i)" color="primary"></mat-slide-toggle>
+        </td>
+
+        <td *ngIf="editColumn">
+          <button mat-icon-button
+                  [attr.aria-label]="editColumn.name"
+                  (click)="onEditClicked(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="w-100 d-flex justify-content-center" *ngIf="totalItems / pageSize >= 1 && totalItems > 0">
+    <pagination-controls (pageChange)="onPageChangeEvent($event)"
+                         [autoHide]="true"
+                         class="mt-2 mb-n3"
+                         responsive="true"
+                         nextLabel="{{ 'pagination.next' | translate }}"
+                         previousLabel="{{ 'pagination.prev' | translate }}"
+                         screenReaderPaginationLabel="{{'pagination.sr_label' | translate}}"
+                         screenReaderPageLabel="{{'pagination.sr_page_label' | translate}}"
+                         screenReaderCurrentLabel="{{'pagination_sr_current_page' | translate}}"></pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+$breakpoint-small: 820px
+
+@media (max-width: $breakpoint-small)
+  div
+    overflow: auto
+    padding-left: 0 !important
+    padding-top: 0 !important
+    padding-bottom: 55px !important
+
+  #nova-categoria-button
+    position: fixed !important
+    right: 0
+    left: 0
+    bottom: 0
+    top: unset
+    margin: auto auto 10px auto !important
+    width: 90%
+
+  app-catalogo-table
+    min-width: $breakpoint-small
+    border-radius: 0
